@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RegistracijosPozymiai.Dtos.Orders
+namespace RegistracijosPozymiai.Dtos.Registrations
 {
     public class DisplayAll
     {
-        public int RegId { get; set; }
+        public List<int> RegsIds { get; set; }
     }
 }

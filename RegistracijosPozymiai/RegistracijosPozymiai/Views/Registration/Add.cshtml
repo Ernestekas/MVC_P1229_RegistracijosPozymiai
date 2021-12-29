@@ -1,0 +1,30 @@
+﻿@model RegistracijosPozymiai.Dtos.Registrations.NewRegistration
+
+<div class="row">
+    <div class="table-responsive col-md-6 p-0">
+        <table class="table table-bordered">
+            <tr>
+                <th>Registracijos požymiai</th>
+            </tr>
+            @foreach(var a in Model.Attributes)
+            {
+                <tr>
+                    <td>@a.Name</td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="table-responsive col-md-6 p-0">
+        <table class="table table-bordered">
+            <tr>
+                <th>Reikšmė</th>
+            </tr>
+            @foreach(var a in Model.Attributes)
+            {
+                <tr>
+                    <td></td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
