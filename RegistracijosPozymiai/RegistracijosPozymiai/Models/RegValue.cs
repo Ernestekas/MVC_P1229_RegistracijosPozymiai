@@ -9,7 +9,9 @@ namespace RegistracijosPozymiai.Models
     public class RegValue
     {
         public int Id { get; set; }
-        public int Name { get; set; }
+        public string Name { get; set; }
+        public int RegistrationAttributeId { get; set; }
         public RegAttribute RegistrationAttribute { get; set; }
+        public List<ValueRegistration> ValueRegistrations { get; set; }
     }
 }

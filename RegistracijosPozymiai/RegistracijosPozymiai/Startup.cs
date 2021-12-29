@@ -6,6 +6,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RegistracijosPozymiai.Data;
+using RegistracijosPozymiai.Repositories;
+using RegistracijosPozymiai.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +29,16 @@ namespace RegistracijosPozymiai
         {
             var defaultConnection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<DataContext>(d => d.UseSqlServer(defaultConnection));
+
+            services.AddTransient<OrdersService>();
+            services.AddTransient<OrdersRepository>();
+
+            services.AddTransient<AttributesService>();
+            services.AddTransient<AttributesRepository>();
+
+            services.AddTransient<ValuesService>();
+            services.AddTransient<ValuesRepository>();
+
             services.AddControllersWithViews();
         }
 

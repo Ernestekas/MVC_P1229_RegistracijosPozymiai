@@ -8,9 +8,7 @@ namespace RegistracijosPozymiai.Models
 {
     public class FormedRegistration
     {
-        public int RegAttributeId { get; set; }
-        public RegAttribute RegAttribute { get; set; }
-        public int RegValueId { get; set; }
-        public RegValue RegValue { get; set; }
+        public int Id { get; set; }
+        public List<ValueRegistration> ValueRegistrations { get; set; }
     }
 }
