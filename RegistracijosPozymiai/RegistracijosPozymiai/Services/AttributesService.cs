@@ -24,6 +24,27 @@ namespace RegistracijosPozymiai.Services
                 Attributes = _attributesRepository.GetAll()
             };
 
+            foreach(var att in result.Attributes)
+            {
+                if(att.RegistrationValues != null)
+                {
+                    if(att.RegistrationValues.Count > 0)
+                    {
+                        result.AttributesSelectedValues.Add(att.RegistrationValues[0]);
+                        result.SelectedValuesIds.Add(att.RegistrationValues[0].Id);
+                    }
+                    else
+                    {
+                        result.AttributesSelectedValues.Add(null);
+                        result.SelectedValuesIds.Add(0);
+                    }
+                }
+                else
+                {
+                    result.AttributesSelectedValues.Add(null);
+                }
+            }
+
             return result;
         }
     }
