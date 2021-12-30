@@ -12,18 +12,15 @@ namespace RegistracijosPozymiai.Controllers
     public class RegistrationController : Controller
     {
         private readonly AttributesService _attributesService;
-        private readonly ValuesService _valuesService;
         private readonly RegistrationsService _registrationsService;
         private readonly ValueRegistrationService _valueRegistrationService;
 
         public RegistrationController(
             AttributesService attributesService,
-            ValuesService valuesService,
             RegistrationsService registrationsService,
             ValueRegistrationService valueRegistrationService)
         {
             _attributesService = attributesService;
-            _valuesService = valuesService;
             _registrationsService = registrationsService;
             _valueRegistrationService = valueRegistrationService;
         }
