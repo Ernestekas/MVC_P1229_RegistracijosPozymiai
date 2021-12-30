@@ -2,14 +2,14 @@
 
 <div class="row">
     <div class="table-responsive col-md-6 p-0">
-        <table class="table table-bordered">
+        <table class="table table-bordered align-text-bottom">
             <tr class="table-info">
                 <th>Registracijos požymiai</th>
             </tr>
             @foreach(var a in Model.Attributes)
             {
-                <tr style="height: 50px">
-                    <td>@a.Name</td>
+                <tr style="height: 63px">
+                    <td style="vertical-align: middle">@a.Name</td>
                 </tr>
             }
         </table>
@@ -26,12 +26,13 @@
                         @if(Model.Attributes[i].RegistrationValues.Count > 0 && Model.SelectedValuesIds[i] != 0)
                         {
                             @Html.DropDownListFor(a => a.SelectedValuesIds[i]
-                                , new SelectList(@Model.Attributes[i].RegistrationValues, "Id", "Name"))
+                                , new SelectList(@Model.Attributes[i].RegistrationValues, "Id", "Name")
+                                , new { @class="form-control w-50" })
                         }
                         else
                         {
                             @Html.DropDownListFor(a => a.SelectedValuesIds[i]
-                                , Enumerable.Empty<SelectListItem>())
+                                , Enumerable.Empty<SelectListItem>(), new { @class="form-control w-50"})
                         }
                     </td>
                 </tr>
