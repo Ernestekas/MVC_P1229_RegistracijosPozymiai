@@ -48,5 +48,11 @@ namespace RegistracijosPozymiai.Controllers
 
             return RedirectToAction(nameof(All));
         }
+
+        public IActionResult Update(int regId)
+        {
+
+            return View();
+        }
     }
 }

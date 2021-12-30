@@ -23,15 +23,17 @@ namespace RegistracijosPozymiai.Services
 
             foreach(var valId in selectedValuesIds)
             {
-                ValueRegistration valReg = new ValueRegistration()
+                if(valId != 0)
                 {
-                    FormedRegistrationId = regId,
-                    RegValueId = valId
-                };
-                valsRegs.Add(valReg);
+                    ValueRegistration valReg = new ValueRegistration()
+                    {
+                        FormedRegistrationId = regId,
+                        RegValueId = valId
+                    };
+                    valsRegs.Add(valReg);
+                }
             }
-
-
+            _valueRegistrationRepository.Create(valsRegs);
         }
     }
 }

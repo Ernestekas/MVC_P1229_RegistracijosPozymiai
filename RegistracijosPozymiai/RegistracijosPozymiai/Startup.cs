@@ -30,14 +30,8 @@ namespace RegistracijosPozymiai
             var defaultConnection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<DataContext>(d => d.UseSqlServer(defaultConnection));
 
-            services.AddTransient<OrdersService>();
-            services.AddTransient<OrdersRepository>();
-
             services.AddTransient<AttributesService>();
             services.AddTransient<AttributesRepository>();
-
-            services.AddTransient<ValuesService>();
-            services.AddTransient<ValuesRepository>();
 
             services.AddTransient<RegistrationsService>();
             services.AddTransient<RegistrationsRepository>();
