@@ -1,5 +1,7 @@
 ﻿@model RegistracijosPozymiai.Dtos.Registrations.NewRegistration
 
+<script src="~/js/toggleDropdowns.js"></script>
+
 <div class="row">
     <div class="table-responsive col-md-6 p-0">
         <table class="table table-bordered align-text-bottom">
@@ -27,12 +29,13 @@
                         {
                             @Html.DropDownListFor(a => a.SelectedValuesIds[i]
                                 , new SelectList(@Model.Attributes[i].RegistrationValues, "Id", "Name")
-                                , new { @class="form-control w-50" })
+                                , new { @class="form-control w-50", @disabled = "disabled"})
                         }
                         else
                         {
                             @Html.DropDownListFor(a => a.SelectedValuesIds[i]
-                                , Enumerable.Empty<SelectListItem>(), new { @class="form-control w-50"})
+                                , Enumerable.Empty<SelectListItem>()
+                                , new { @class="form-control w-50", @disabled="disabled"})
                         }
                     </td>
                 </tr>
@@ -40,3 +43,9 @@
         </table>
     </div>
 </div>
+<div>
+    <input type="button" id="toggle" class="btn btn-warning" value="Koreguoti požymius" onclick="toggleDropDowns()" />
+    @Html.ActionLink("Pridėti registraciją", "Add", "Registration", Model, new {@class="btn btn-primary"})
+</div>
+
+

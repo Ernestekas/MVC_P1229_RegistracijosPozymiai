@@ -15,7 +15,7 @@ namespace RegistracijosPozymiai.Controllers
         private readonly RegistrationsService _registrationsService;
 
         public RegistrationController(
-            AttributesService attributesService, 
+            AttributesService attributesService,
             ValuesService valuesService,
             RegistrationsService registrationsService)
         {
@@ -34,6 +34,13 @@ namespace RegistracijosPozymiai.Controllers
         {
             NewRegistration newRegistration = _attributesService.PrepareNewRegistration();
             return View(newRegistration);
+        }
+
+        [HttpPost]
+        public IActionResult Add(NewRegistration registration)
+        {
+            
+            return RedirectToAction(nameof(All));
         }
     }
 }
