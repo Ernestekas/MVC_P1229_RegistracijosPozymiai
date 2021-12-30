@@ -10,6 +10,7 @@ namespace RegistracijosPozymiai.Dtos.Registrations
     public class NewRegistration
     {
         public List<RegAttribute> Attributes { get; set; }
+        public List<int> AttributesIds { get; set; } = new List<int>();
         public List<RegValue> AttributesSelectedValues { get; set; } = new List<RegValue>();
         public List<int> SelectedValuesIds { get; set; } = new List<int>();
     }

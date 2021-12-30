@@ -21,5 +21,13 @@ namespace RegistracijosPozymiai.Repositories
         {
             return _context.FormedRegistrations.ToList();
         }
+
+        public int Create()
+        {
+            FormedRegistration newReg = new FormedRegistration();
+            _context.Add(newReg);
+            _context.SaveChanges();
+            return newReg.Id;
+        }
     }
 }

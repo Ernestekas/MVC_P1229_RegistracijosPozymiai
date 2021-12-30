@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RegistracijosPozymiai.Dtos.Registrations;
+using RegistracijosPozymiai.Models;
 using RegistracijosPozymiai.Services;
 using System;
 using System.Collections.Generic;
@@ -13,15 +14,18 @@ namespace RegistracijosPozymiai.Controllers
         private readonly AttributesService _attributesService;
         private readonly ValuesService _valuesService;
         private readonly RegistrationsService _registrationsService;
+        private readonly ValueRegistrationService _valueRegistrationService;
 
         public RegistrationController(
             AttributesService attributesService,
             ValuesService valuesService,
-            RegistrationsService registrationsService)
+            RegistrationsService registrationsService,
+            ValueRegistrationService valueRegistrationService)
         {
             _attributesService = attributesService;
             _valuesService = valuesService;
             _registrationsService = registrationsService;
+            _valueRegistrationService = valueRegistrationService;
         }
 
         public IActionResult All()
@@ -39,7 +43,9 @@ namespace RegistracijosPozymiai.Controllers
         [HttpPost]
         public IActionResult Add(NewRegistration registration)
         {
-            
+            int regId = _registrationsService.Create();
+            _valueRegistrationService.Create(regId, registration.SelectedValuesIds);
+
             return RedirectToAction(nameof(All));
         }
     }

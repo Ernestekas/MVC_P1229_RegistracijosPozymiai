@@ -22,5 +22,10 @@ namespace RegistracijosPozymiai.Services
 
             return result;
         }
+
+        public int Create()
+        {
+            return _registrationsRepository.Create();
+        }
     }
 }

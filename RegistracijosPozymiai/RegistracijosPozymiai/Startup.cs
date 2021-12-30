@@ -42,6 +42,9 @@ namespace RegistracijosPozymiai
             services.AddTransient<RegistrationsService>();
             services.AddTransient<RegistrationsRepository>();
 
+            services.AddTransient<ValueRegistrationService>();
+            services.AddTransient<ValueRegistrationRepository>();
+
             services.AddControllersWithViews();
         }
 

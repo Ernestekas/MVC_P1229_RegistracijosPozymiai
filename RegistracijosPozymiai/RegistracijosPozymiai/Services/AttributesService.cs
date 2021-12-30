@@ -24,6 +24,8 @@ namespace RegistracijosPozymiai.Services
                 Attributes = _attributesRepository.GetAll()
             };
 
+            result.AttributesIds = result.Attributes.Select(a => a.Id).ToList();
+
             foreach(var att in result.Attributes)
             {
                 if(att.RegistrationValues != null)
