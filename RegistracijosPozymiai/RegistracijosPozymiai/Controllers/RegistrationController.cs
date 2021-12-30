@@ -33,12 +33,12 @@ namespace RegistracijosPozymiai.Controllers
 
         public IActionResult Add()
         {
-            NewRegistration newRegistration = _attributesService.PrepareNewRegistration();
+            Registration newRegistration = _attributesService.PrepareNewRegistration();
             return View(newRegistration);
         }
 
         [HttpPost]
-        public IActionResult Add(NewRegistration registration)
+        public IActionResult Add(Registration registration)
         {
             int regId = _registrationsService.Create();
             _valueRegistrationService.Create(regId, registration.SelectedValuesIds);

@@ -29,5 +29,12 @@ namespace RegistracijosPozymiai.Repositories
             _context.SaveChanges();
             return newReg.Id;
         }
+
+        public FormedRegistration GetById(int regId)
+        {
+            return _context.FormedRegistrations
+                .Include(r => r.ValueRegistrations)
+                .FirstOrDefault(r => r.Id == regId);
+        }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RegistracijosPozymiai.Dtos.Registrations
 {
-    public class NewRegistration
+    public class Registration
     {
         public List<RegAttribute> Attributes { get; set; }
         public List<int> AttributesIds { get; set; } = new List<int>();

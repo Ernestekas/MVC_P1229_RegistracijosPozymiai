@@ -17,9 +17,9 @@ namespace RegistracijosPozymiai.Services
             _attributesRepository = attributesRepository;
         }
 
-        public NewRegistration PrepareNewRegistration()
+        public Registration PrepareNewRegistration()
         {
-            NewRegistration result = new NewRegistration()
+            Registration result = new Registration()
             {
                 Attributes = _attributesRepository.GetAll()
             };
