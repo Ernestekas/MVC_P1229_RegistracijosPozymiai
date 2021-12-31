@@ -48,8 +48,8 @@ namespace RegistracijosPozymiai.Controllers
 
         public IActionResult Update(int regId)
         {
-
-            return View();
+            Registration update = _registrationsService.PrepareForUpdate(regId);
+            return View(update);
         }
     }
 }

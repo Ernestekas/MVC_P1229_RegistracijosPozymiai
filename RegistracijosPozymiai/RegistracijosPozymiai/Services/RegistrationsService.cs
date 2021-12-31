@@ -10,13 +10,16 @@ namespace RegistracijosPozymiai.Services
     {
         private RegistrationsRepository _registrationsRepository;
         private AttributesRepository _attributesRepository;
+        private ValuesRepository _valuesRepository;
 
         public RegistrationsService(
             RegistrationsRepository registrationsRepository
-            , AttributesRepository attributesRepository)
+            , AttributesRepository attributesRepository
+            , ValuesRepository valuesRepository)
         {
             _registrationsRepository = registrationsRepository;
             _attributesRepository = attributesRepository;
+            _valuesRepository = valuesRepository;
         }
 
         public DisplayAll GetAll()
@@ -37,24 +40,52 @@ namespace RegistracijosPozymiai.Services
         public Registration PrepareForUpdate(int regId)
         {
             FormedRegistration formedReg = _registrationsRepository.GetById(regId);
+            List<int> selectedValuesIds = 
+                _registrationsRepository.GetAllRegValues(regId).Select(x => x.RegValueId).ToList();
+            List<RegValue> selectedValues = _valuesRepository.GetByIdsList(selectedValuesIds);
 
             Registration reg = new Registration()
             {
-                Attributes = _attributesRepository.GetAll(),
+                Attributes = _attributesRepository.GetAll()
             };
 
             reg.AttributesIds = reg.Attributes.Select(a => a.Id).ToList();
+            reg.AttributesSelectedValues = GetOrderedValues(reg.Attributes, selectedValues);
+            reg.SelectedValuesIds = GetOrderedValuesIds(reg.AttributesSelectedValues);
 
-            for(int i = 0; i < reg.Attributes.Count; i++)
+            return reg;
+        }
+
+        private List<RegValue> GetOrderedValues(List<RegAttribute> attributes, List<RegValue> selectedValues)
+        {
+            List<RegValue> result = new List<RegValue>();
+
+            foreach(var attribute in attributes)
             {
-                // Pick attribute. It has regValues. Each value has id. 
-                // formedReg has valueRegistration which has regValueId.
-                // Selected RegValue.
-                // Pick one value from attribute.RegValues
+                RegValue value = selectedValues.FirstOrDefault(v => v.RegistrationAttributeId == attribute.Id);
+                result.Add(value);
             }
-            
-            
-            return null;
+
+            return result;
+        }
+
+        private List<int> GetOrderedValuesIds(List<RegValue> orderedValues)
+        {
+            List<int> result = new List<int>();
+
+            foreach(var val in orderedValues)
+            {
+                if(val != null)
+                {
+                    result.Add(val.Id);
+                }
+                else
+                {
+                    result.Add(0);
+                }
+            }
+
+            return result;
         }
     }
 }

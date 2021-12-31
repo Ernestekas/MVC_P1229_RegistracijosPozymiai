@@ -1,4 +1,5 @@
-﻿using RegistracijosPozymiai.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using RegistracijosPozymiai.Data;
 using RegistracijosPozymiai.Models;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,12 @@ namespace RegistracijosPozymiai.Repositories
 
         public List<RegValue> GetAll()
         {
-            return null;
+            return _context.RegValues.Include(v => v.ValueRegistrations).ToList();
+        }
+
+        public List<RegValue> GetByIdsList(List<int> valuesIds)
+        {
+            return GetAll().Where(v => valuesIds.Contains(v.Id)).ToList();
         }
     }
 }

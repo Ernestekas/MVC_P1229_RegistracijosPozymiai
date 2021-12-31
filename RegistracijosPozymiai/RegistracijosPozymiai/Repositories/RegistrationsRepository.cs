@@ -36,5 +36,13 @@ namespace RegistracijosPozymiai.Repositories
                 .Include(r => r.ValueRegistrations)
                 .FirstOrDefault(r => r.Id == regId);
         }
+
+        public List<ValueRegistration> GetAllRegValues(int regId)
+        {
+            return _context.ValueRegistrations
+                    .Include(vr => vr.RegValue)
+                    .Where(vr => vr.FormedRegistrationId == regId)
+                    .ToList();
+        }
     }
 }
