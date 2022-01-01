@@ -6,14 +6,9 @@ using System.Linq;
 
 namespace RegistracijosPozymiai.Repositories
 {
-    public class RegistrationsRepository
+    public class RegistrationsRepository: RepositoryBase<FormedRegistration>
     {
-        private DataContext _context;
-        public RegistrationsRepository(DataContext context)
-        {
-            _context = context;
-        }
-
+        public RegistrationsRepository(DataContext context): base(context) { }
         public List<FormedRegistration> GetAll()
         {
             return _context.FormedRegistrations.ToList();

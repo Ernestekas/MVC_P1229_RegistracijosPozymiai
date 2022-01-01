@@ -6,13 +6,9 @@ using System.Linq;
 
 namespace RegistracijosPozymiai.Repositories
 {
-    public class AttributesRepository
+    public class AttributesRepository: RepositoryBase<RegAttribute>
     {
-        private DataContext _context;
-        public AttributesRepository(DataContext context)
-        {
-            _context = context;
-        }
+        public AttributesRepository(DataContext context): base(context) { }
 
         public List<RegAttribute> GetAll()
         {

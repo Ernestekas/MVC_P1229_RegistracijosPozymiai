@@ -5,14 +5,9 @@ using System.Linq;
 
 namespace RegistracijosPozymiai.Repositories
 {
-    public class ValueRegistrationRepository
+    public class ValueRegistrationRepository: RepositoryBase<ValueRegistration>
     {
-        private DataContext _context;
-        public ValueRegistrationRepository(DataContext context)
-        {
-            _context = context;
-        }
-
+        public ValueRegistrationRepository(DataContext context): base(context) { }
         public List<ValueRegistration> GetAll(int? regId)
         {
             List<ValueRegistration> result = new List<ValueRegistration>();
