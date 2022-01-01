@@ -1,11 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RegistracijosPozymiai.Data;
 using RegistracijosPozymiai.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RegistracijosPozymiai.Repositories
 {

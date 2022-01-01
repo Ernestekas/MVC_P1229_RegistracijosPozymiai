@@ -46,6 +46,7 @@
     </div>
     <div style="display: none">
         @Html.EditorFor(m => m.AttributesIds)
+        @Html.HiddenFor(m => m.RegistrationId)
     </div>
     <div>
         <input type="button" id="toggle" class="btn btn-warning" value="Koreguoti požymius" onclick="toggleDropDowns()" />

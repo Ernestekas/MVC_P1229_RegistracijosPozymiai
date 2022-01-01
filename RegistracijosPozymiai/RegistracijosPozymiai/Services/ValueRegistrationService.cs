@@ -1,10 +1,6 @@
 ﻿using RegistracijosPozymiai.Models;
 using RegistracijosPozymiai.Repositories;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RegistracijosPozymiai.Services
 {
@@ -34,6 +30,14 @@ namespace RegistracijosPozymiai.Services
                 }
             }
             _valueRegistrationRepository.Create(valsRegs);
+        }
+
+        public void Update(int regId, List<int> selectedValuesIds)
+        {
+            List<ValueRegistration> oldValsReg = _valueRegistrationRepository.GetAll(regId);
+
+            _valueRegistrationRepository.Delete(oldValsReg);
+            Create(regId, selectedValuesIds);
         }
     }
 }

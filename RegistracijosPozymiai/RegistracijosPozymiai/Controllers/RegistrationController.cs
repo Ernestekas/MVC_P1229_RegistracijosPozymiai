@@ -1,11 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RegistracijosPozymiai.Dtos.Registrations;
-using RegistracijosPozymiai.Models;
 using RegistracijosPozymiai.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace RegistracijosPozymiai.Controllers
 {
@@ -50,6 +45,13 @@ namespace RegistracijosPozymiai.Controllers
         {
             Registration update = _registrationsService.PrepareForUpdate(regId);
             return View(update);
+        }
+
+        [HttpPost]
+        public IActionResult Update(Registration registration)
+        {
+            _valueRegistrationService.Update(registration.RegistrationId, registration.SelectedValuesIds);
+            return RedirectToAction(nameof(All));
         }
     }
 }

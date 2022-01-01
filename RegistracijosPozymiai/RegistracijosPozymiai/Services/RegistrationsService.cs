@@ -46,6 +46,7 @@ namespace RegistracijosPozymiai.Services
 
             Registration reg = new Registration()
             {
+                RegistrationId = regId,
                 Attributes = _attributesRepository.GetAll()
             };
 
