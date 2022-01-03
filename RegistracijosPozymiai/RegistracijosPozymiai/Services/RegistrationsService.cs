@@ -60,10 +60,11 @@ namespace RegistracijosPozymiai.Services
         private List<RegValue> GetOrderedValues(List<RegAttribute> attributes, List<RegValue> selectedValues)
         {
             List<RegValue> result = new List<RegValue>();
-
+            
             foreach(var attribute in attributes)
             {
                 RegValue value = selectedValues.FirstOrDefault(v => v.RegistrationAttributeId == attribute.Id);
+                
                 result.Add(value);
             }
 

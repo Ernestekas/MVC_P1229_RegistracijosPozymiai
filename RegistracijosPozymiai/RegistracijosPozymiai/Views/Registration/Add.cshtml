@@ -26,7 +26,7 @@
                 {
                     <tr>
                         <td>
-                            @if (Model.Attributes[i].RegistrationValues.Count > 0 && Model.SelectedValuesIds[i] != 0)
+                            @if (Model.Attributes[i].RegistrationValues.Count > 0)
                             {
                                 @Html.DropDownListFor(a => a.SelectedValuesIds[i]
                                     , new SelectList(@Model.Attributes[i].RegistrationValues, "Id", "Name")
